@@ -661,9 +661,9 @@ module Dexter
         SELECT
           DISTINCT query
         FROM
-          pg_stat_statements
+          extensions.pg_stat_statements
         INNER JOIN
-          pg_database ON pg_database.oid = pg_stat_statements.dbid
+          pg_database ON pg_database.oid = extensions.pg_stat_statements.dbid
         WHERE
           datname = current_database()
           AND #{total_time} >= \$1
